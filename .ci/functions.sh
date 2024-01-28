@@ -21,7 +21,9 @@ function lint_tofu() {
     for tf_proj in "${tf_projs[@]}"; do
         if [[ -n "$(find ./"${tf_proj}" -name *.tf)" ]]; then
             pushd "${tf_proj}" >/dev/null || return
-            tofu init -backend=false >/dev/null 2>/dev/null || (popd >/dev/null || return)
+            if [[ -d .terraform ]]; then rm -rf .terraform; fi
+            if [[ -e .terraform.lock.hcl ]]; then rm .terraform.lock.hcl; fi
+            tofu init -backend=false >/dev/null || (popd >/dev/null || return)
             tofu validate || (popd >/dev/null || return)
             popd >/dev/null || return
         fi
