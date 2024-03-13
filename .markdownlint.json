@@ -1,0 +1,9 @@
+{
+  "line-length": false,
+  "no-trailing-spaces": false,
+  "MD025": false,
+  "MD033": {
+    "allowed_elements": ["source", "video", "br"]
+  },
+  "MD046": false
+}
