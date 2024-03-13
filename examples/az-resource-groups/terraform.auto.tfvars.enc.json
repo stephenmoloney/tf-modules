@@ -1,0 +1,61 @@
+{
+	"global_tags": {
+		"environment": "test",
+		"managed-by": "terraform",
+		"triggered-by": "user-principal-stephen-moloney",
+		"project": "examples-az-resource-groups",
+		"purpose": "Demonstrating use of module for creating Azure Resource Groups",
+		"source-dir": "examples/az-resource-groups",
+		"source-repo": "https://github.com/eirenauts/tf-modules.git"
+	},
+	"az_resource_groups": {
+		"tf_modules_az_rg_1": {
+			"location": "North Europe",
+			"name": "tf-modules-az-rg-1",
+			"tags": {
+				"name": "tf-modules-az-rg-1",
+				"environment": "dev",
+				"managed-by": "terraform"
+			}
+		},
+		"tf_modules_az_rg_2": {
+			"location": "West Europe",
+			"name": "tf-modules-az-rg-2",
+			"tags": {
+				"name": "tf-modules-az-rg-2",
+				"managed-by": "terraform"
+			}
+		}
+	},
+	"azure": {
+		"az_ad_application_name": "",
+		"client_secret_enc": "",
+		"subscription_id": "",
+		"tenant_id": ""
+	},
+	"sops_pgp_fingerprint": "21583B31C30CB8BE31418483FC6E9A7735295C2B",
+	"terraform_backend": {
+		"storage_account_name": "",
+		"storage_account_resource_group": "",
+		"storage_container_key": "default.tfstate",
+		"storage_container_name": "examples-az-resource-groups"
+	},
+	"sops": {
+		"kms": null,
+		"gcp_kms": null,
+		"azure_kv": null,
+		"hc_vault": null,
+		"age": null,
+		"lastmodified": "2024-03-13T20:29:39Z",
+		"mac": "ENC[AES256_GCM,data:w0Vi8o2AEBR2ynP+BxagKFp0uamsgd0Y1DwYbiFQt7SR+hhxVjW0iDY9R30brf+A7x2TRUQLUAosaShv8baqRFvTDLYgisujHyzKxaDzxckYxHmgmuWRP7B6JWJpCRpZaHvV+ue6TqvHZlIfk55dYmrrM3ovjm4Q5RPDqPDv51k=,iv:UjGDFA4RbjM8TAGFg32v5QDFsQvIjIbGf/1CKoKp4X8=,tag:3Ys1Ecqlah6maRzx3oNhQA==,type:str]",
+		"pgp": [
+			{
+				"created_at": "2024-03-13T20:29:39Z",
+				"enc": "-----BEGIN PGP MESSAGE-----\n\nhQIMAx3f3zFZ2uXWAQ/9GCfP21yJU5FRd6CLAZ46KhbrCwyBOkPD966/5sk3+dlQ\nnAtx09RfBhHlWPEbw5hzKBtF+p7yHhFRUR3PC17wbw1J8q4LcAzZocIBrZo9G3Dj\nTVKR0HMXtkKtfg1rM9U2S0RF4bTwm9mVl1qfe9xRk1bvMbBAqGhHTMMll/UDlCVd\nQqJBYmuENncYugBg5BNtGkNd9fUw+pKU9nmprcL9H7x+JCnzont90qYtFpAV+4J9\npm6e/HRmLC5AL0QWl03ymP/ZSTAnrjeGLPApQRTet+oycG6qfxRnOqVg2IZcfG9D\n21SnmiYBEbC2CAbCdWBgT7Sgf0XKAY876Z8R2OWjVf8/52Zl8kydgIELQ3UDjSqB\nDBhLi0KfY5ArQG4FkLbYkkUwpkaaNYb2ixi+QFl9P9bQsEs+mZ13Bk1Xr+UUhlHm\neSZopdXuj1MTcI0ela1h1gNPjNzIqU7aNVYMtG/7M/Xpm17owlJmecliV3gHi5Dg\npmryL7TtrHjfcmgZhw7G1lxhFmXxUEqnQVaoxdT2uDZeAxyUIg9fstD1Rdj7llXS\ngkPWw2Sp9X1izDomcjmN2L6G1QnDypYzIplBJx2wdWuCXtRsWCJ7U8lxxln6r6yO\nqMwDzgMPu+L4RN3MejgDKevWrJagurzcSGs2rVcQLV1r0ZRfEk1WRjyBX+nTaw7S\nXAFe1OflOBL7tgt8WsrytVdQa1aqwwPsCFa/VO5tosVqePrjVZWsU03X0GJEHvVh\nyhkoOT3byPUEmUqn0x7DmfYi2bkkR6YEKlLPqfyswdhCBKYQ3y20PKR/YCNN\n=FWrm\n-----END PGP MESSAGE-----",
+				"fp": "21583B31C30CB8BE31418483FC6E9A7735295C2B"
+			}
+		],
+		"encrypted_suffix": "_enc",
+		"version": "3.8.1"
+	}
+}
