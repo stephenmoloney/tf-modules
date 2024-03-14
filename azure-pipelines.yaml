@@ -1,0 +1,24 @@
+# @format
+---
+# Organization settings in Azure will require a comment to
+# allow the PR build proceed
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - *
+
+trigger:
+  batch: false
+  branches:
+    include:
+      - "*"
+  tags:
+    include:
+      - "*"
+
+pool:
+  vmImage: ubuntu-22.04
+
+stages:
+  - template: .azure-pipelines/templates/01_lint.yaml

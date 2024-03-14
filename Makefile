@@ -1,8 +1,12 @@
 SHELL := /bin/bash
 
 .PHONY: \
+	install_deps \
 	format \
 	lint
+
+install_deps:
+	./.ci/exec_functions.sh install_all_deps
 
 format:
 	./.ci/exec_functions.sh format_markdown
