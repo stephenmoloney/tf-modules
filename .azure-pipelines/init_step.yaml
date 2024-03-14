@@ -14,4 +14,6 @@ steps:
           apt-get update -y -qq && apt-get install -y -qq build-essential sudo
         fi
         mkdir -p /usr/local/go || true
+        echo "${GOROOT}"
+        go version || true
         make install_deps
