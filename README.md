@@ -10,25 +10,14 @@ a logical and coherent grouping.
 Install whichever dependencies are missing for the CI process and using opentofu.
 Installation instructions below are targetting ubuntu 22.04.
 
+See `./ci/functions_init.sh` and `Makefile`.
+
+If the required dependencies are already installed, this step
+can be skipped.
+
 ```bash
-# Install asdf to install npm modules
-wget -q https://raw.githubusercontent.com/stephenmoloney/localbox/master/bin/install/asdf.sh
-chmod +x ./asdf.sh && ./asdf.sh
-export ASDF_DIR="${HOME}/.asdf" && source "${HOME}/.asdf/asdf.sh"
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf install nodejs 16.14.2
-asdf global nodejs 16.14.2
-asdf plugin add yarn
-asdf install yarn 1.22.18
-asdf global yarn 1.22.18
-
-# Install npm modules
-yarn install --frozen-lockfile --ignore-optional
-
-# Install opentofu
-asdf plugin add opentofu https://github.com/virtualroot/asdf-opentofu.git
-asdf install opentofu latest
-asdf global opentofu latest
+sudo apt-get install -y build-essential
+make install_deps
 ```
 
 ## CI Tasks

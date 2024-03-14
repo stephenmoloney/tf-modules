@@ -6,7 +6,7 @@ pr:
   autoCancel: true
   branches:
     include:
-      - *
+      - "*"
 
 trigger:
   batch: false
@@ -16,6 +16,13 @@ trigger:
   tags:
     include:
       - "*"
+
+variables:
+  GOPATH: '$(Agent.HomeDirectory)/go'
+  GOBIN:  '$(GOPATH)/bin'
+  GOROOT: '/usr/local/go'
+  AZURE_TOOLS_CACHE: '/opt/hostedtoolcache'
+  GOROOT_AZURE_AGENT: '/opt/hostedtoolcache/go'
 
 pool:
   vmImage: ubuntu-22.04

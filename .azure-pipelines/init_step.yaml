@@ -11,6 +11,8 @@ steps:
       noRc: true
       script: |
         if [ -z "$(command -v make)" ]; then
-          apt-get update -y -qq && apt-get install -y -qq build-essential
+          apt-get update -y -qq && apt-get install -y -qq build-essential sudo
         fi
-        make install_all_deps
+        rm -rf "${GOROOT_AZURE_AGENT}" || true
+        rm -rf "${AZURE_TOOLS_CACHE}" || true
+        make install_deps
