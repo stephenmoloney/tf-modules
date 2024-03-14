@@ -11,6 +11,7 @@ steps:
       noRc: true
       script: |
         if [ -z "$(command -v make)" ]; then
-          apt-get update -y -qq && apt-get install -y -qq build-essential
+          apt-get update -y -qq && apt-get install -y -qq build-essential sudo
         fi
+        mkdir -p /usr/local/go || true
         make install_deps
