@@ -13,4 +13,4 @@ steps:
         if [ -z "$(command -v make)" ]; then
           apt-get update -y -qq && apt-get install -y -qq build-essential
         fi
-        make install_all_deps
+        make install_deps
