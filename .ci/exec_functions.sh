@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck shell=bash disable=SC1094,SC1090,SC1091,SC2044
 
+set -x
 set -e
 set -o pipefail
 
