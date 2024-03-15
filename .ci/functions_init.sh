@@ -39,7 +39,33 @@ function install_opentofu() {
     asdf global opentofu "${opentofu_version}"
 }
 
+function install_golang() {
+    local release=$1
+
+    if [[ -z "${release}" ]]; then
+        release=1.20.4
+    fi
+
+    if [ -z "$(command -v wget)" ]; then
+        sudo apt-get install -y -qq wget
+    fi
+
+    wget --quiet "https://dl.google.com/go/go${release}.linux-amd64.tar.gz"
+
+    if [[ -d /usr/local/go ]]; then
+        sudo rm -R /usr/local/go
+    fi
+
+    sudo tar -C /usr/local -xzf "go${release}.linux-amd64.tar.gz" &&
+        echo "export PATH=$PATH:/usr/local/go/bin" >>"${HOME}/.bash_profile" &&
+        echo "export GOPATH=${HOME}/go" >>"${HOME}/.bash_profile" &&
+        echo "export GOROOT=/usr/local/go" >>"${HOME}/.bash_profile" &&
+        source "${HOME}/.bash_profile" &&
+        go version
+}
+
 function install_all_deps() {
+    install_golang
     install_shfmt
     install_asdf &&
         (
