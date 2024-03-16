@@ -6,7 +6,7 @@ SHELL := /bin/bash
 	lint
 
 install_deps:
-	./.ci/exec_functions.sh install_all_deps
+	./.ci/exec_functions.sh install_deps
 
 format:
 	./.ci/exec_functions.sh format_markdown
