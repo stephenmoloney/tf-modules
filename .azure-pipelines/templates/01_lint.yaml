@@ -24,4 +24,6 @@ stages:
               noProfile: true
               noRc: true
               script: |
+                set -e
+                source "${HOME}/.asdf/asdf.sh"
                 make lint

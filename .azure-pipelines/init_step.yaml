@@ -10,9 +10,12 @@ steps:
       noProfile: true
       noRc: true
       script: |
+        set -e
         if [ -z "$(command -v make)" ]; then
           apt-get update -y -qq && apt-get install -y -qq build-essential sudo
         fi
         rm -rf "${GOROOT_AZURE_AGENT}" || true
         rm -rf "${AZURE_TOOLS_CACHE}" || true
         make install_deps
+        source "${HOME}/.asdf/asdf.sh"
+        tofu version
