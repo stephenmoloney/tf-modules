@@ -3,8 +3,8 @@ terraform {
 
   required_providers {
     azurerm = {
-      source  = "registry.opentofu.org/hashicorp/azurerm"
-      version = "3.96.0"
+      source  = "registry.opentofu.org/scaleway/scaleway"
+      version = "2.38.2"
     }
   }
 }
