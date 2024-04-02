@@ -35,7 +35,7 @@ software applications and automation tools to scaleway cloud resources.
 
 Policies are RBAC (Role Based Access Control) rules in scaleway. The
 equivalent in Azure is roles and role assignments which was described
-[in another article on service principals](https://staging.stephenmoloney.com/blog/creating-an-azure-service-principal-opentofu/).
+[in another article on service principals](https://stephenmoloney.com/blog/creating-an-azure-service-principal-opentofu/).
 
 The following two elements are key to defining the rules:
 
