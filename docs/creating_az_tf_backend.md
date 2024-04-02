@@ -1,6 +1,6 @@
 # Creating an Azure Backend for terraform/opentofu
 
-![Azure Blob Storage Backend](./create_az_tf_backend_001.png)
+![Azure Blob Storage Backend](./assets/create_az_tf_backend_001.png)
 
 Terraform/Opentofu are leading tools for building and maintaining infrastructure
 as code. However, there is a chicken and egg problem, in order to

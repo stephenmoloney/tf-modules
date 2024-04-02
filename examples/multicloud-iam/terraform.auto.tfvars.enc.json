@@ -1,0 +1,295 @@
+{
+	"global_tags": {
+		"environment": "test",
+		"managed-by": "terraform",
+		"triggered-by": "user-principal-stephen-moloney",
+		"project": "az-multicloud-iam",
+		"purpose": "Demonstrating azure key vault and scaleway iam usage",
+		"source-dir": "examples/multicloud-iam",
+		"source-repo": "https://github.com/eirenauts/tf-modules.git"
+	},
+	"azure": {
+		"az_ad_application_name": "_redacted_",
+		"client_secret_enc": "ENC[AES256_GCM,data:N1xdRlxl2WdoHw==,iv:rJWAk6mEbqoCR7lLdHCu/9hVvBnQclbpvGGzL/ewp7o=,tag:Fogyln4+T9FSsFIIkHzaUg==,type:str]",
+		"subscription_id": "_redacted_",
+		"tenant_id": "_redacted_"
+	},
+	"terraform_backend": {
+		"storage_account_name": "_redacted_",
+		"storage_account_resource_group": "_redacted_",
+		"storage_container_key": "default.tfstate",
+		"storage_container_name": "az-multicloud-iam"
+	},
+	"az_key_vaults": {
+		"multicloud_iam_kv": {
+			"access_policies": [
+				{
+					"certificate_permissions": [
+						"Backup",
+						"Create",
+						"Delete",
+						"DeleteIssuers",
+						"Get",
+						"GetIssuers",
+						"Import",
+						"List",
+						"ListIssuers",
+						"ManageContacts",
+						"ManageIssuers",
+						"Purge",
+						"Recover",
+						"Restore",
+						"SetIssuers",
+						"Update"
+					],
+					"key_permissions": [
+						"Backup",
+						"Create",
+						"Decrypt",
+						"Delete",
+						"Encrypt",
+						"Get",
+						"GetRotationPolicy",
+						"Import",
+						"List",
+						"Purge",
+						"Recover",
+						"Release",
+						"Restore",
+						"Rotate",
+						"SetRotationPolicy",
+						"Sign",
+						"UnwrapKey",
+						"Update",
+						"Verify",
+						"WrapKey"
+					],
+					"principal_name": "\u003cyour_admin_level_user_principal\u003e",
+					"secret_permissions": [
+						"Backup",
+						"Delete",
+						"Get",
+						"List",
+						"Purge",
+						"Recover",
+						"Restore",
+						"Set"
+					],
+					"storage_permissions": [
+						"Backup",
+						"Delete",
+						"DeleteSAS",
+						"Get",
+						"GetSAS",
+						"List",
+						"ListSAS",
+						"Purge",
+						"Recover",
+						"RegenerateKey",
+						"Restore",
+						"Set",
+						"SetSAS",
+						"Update"
+					],
+					"type": "user-principal"
+				},
+				{
+					"certificate_permissions": [],
+					"key_permissions": [
+						"Decrypt",
+						"Encrypt"
+					],
+					"principal_name": "az-multicloud-app",
+					"secret_permissions": [
+						"Get",
+						"List"
+					],
+					"storage_permissions": [],
+					"type": "service-principal"
+				}
+			],
+			"enable_purge_protection": "true",
+			"location": "North Europe",
+			"name": "az-multicloud-key-vault",
+			"network_rules": [
+				{
+					"bypass": "AzureServices",
+					"default_action": "Deny",
+					"ip_rules": [
+						"\u003csome_ip_block\u003e/27",
+						"\u003csome_ip_address\u003e/32"
+					],
+					"virtual_network_subnet_ids": []
+				}
+			],
+			"resource_group": "tf-modules-az-rg-1",
+			"rsa_keys": [
+				{
+					"key_opts": [
+						"decrypt",
+						"encrypt"
+					],
+					"key_size": 4096,
+					"name": "az-multicloud-rsa-key",
+					"type": "RSA"
+				}
+			],
+			"sku": "standard",
+			"tags": {
+				"purpose": "key-vault to be consumed by applications and other terraform projects"
+			}
+		}
+	},
+	"az_scw_iam_secrets": {
+		"scw_multicloud_iam_access_key": {
+			"name": "scw-multicloud-iam-access-key",
+			"content_type": "text/plain",
+			"expires": false,
+			"expiry_day": null,
+			"expiry_month": null,
+			"expiry_year": null,
+			"iam_key": "scw_multicloud_iam_key",
+			"resource_group": "tf-modules-az-rg-1",
+			"tags": {
+				"purpose": "Access key for scaleway iam to access s3 object storage"
+			},
+			"vault": "az-multicloud-key-vault"
+		},
+		"scw_multicloud_iam_secret_key": {
+			"name": "scw-multicloud-iam-secret-key",
+			"content_type": "text/plain",
+			"expires": false,
+			"expiry_day": null,
+			"expiry_month": null,
+			"expiry_year": null,
+			"iam_key": "scw_multicloud_iam_key",
+			"resource_group": "tf-modules-az-rg-1",
+			"tags": {
+				"purpose": "Secret key for scaleway iam to access s3 object storage"
+			},
+			"vault": "az-multicloud-key-vault"
+		}
+	},
+	"az_service_principals": {
+		"az_multicloud_app": {
+			"az_ad_application_name": "az-multicloud-app",
+			"builtin_role": {
+				"assigned_scopes": [
+					"/subscriptions/_redacted_/resourceGroups/tf-modules-az-rg-1"
+				],
+				"name": "_redacted_"
+			},
+			"custom_role": {
+				"assignable_scopes": [
+					"/subscriptions/_redacted_"
+				],
+				"assigned_scopes": [
+					"/subscriptions/_redacted_/resourceGroups/tf-modules-az-rg-1"
+				],
+				"description": "Can perform most important actions within the primary and secondary scopes",
+				"name": "az-multicloud-app",
+				"permissions": {
+					"actions": [
+						"Microsoft.Storage/*/read",
+						"Microsoft.Storage/storageAccounts/listKeys/action",
+						"Microsoft.Storage/storageAccounts/ListAccountSas/action",
+						"Microsoft.Storage/storageAccounts/read",
+						"Microsoft.Network/*/read",
+						"Microsoft.Compute/*/read",
+						"Microsoft.KeyVault/vaults/read",
+						"Microsoft.Authorization/*/read",
+						"Microsoft.ResourceHealth/availabilityStatuses/read",
+						"Microsoft.Resources/subscriptions/resourceGroups/read",
+						"Microsoft.Insights/alertRules/*",
+						"Microsoft.Insights/diagnosticSettings/*"
+					],
+					"data_actions": [
+						"Microsoft.KeyVault/vaults/keys/read",
+						"Microsoft.KeyVault/vaults/keys/encrypt/action",
+						"Microsoft.KeyVault/vaults/keys/decrypt/action",
+						"Microsoft.KeyVault/vaults/secrets/getSecret/action",
+						"Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+					],
+					"not_actions": [],
+					"not_data_actions": []
+				},
+				"scope": "/subscriptions/_redacted_"
+			},
+			"description": "Service principal for automated devops operations",
+			"hours_to_expiry": "43800",
+			"role_type": "custom",
+			"skip_service_principal_aad_check": false
+		}
+	},
+	"scaleway": {
+		"access_key_enc": "ENC[AES256_GCM,data:cC7vmgY70GBqZA==,iv:t9Jux16Kjbk7jFzeirRnegVmX5x3GobfaW9l0JepyGk=,tag:sCpKCc76khM1Zb88ye0RvQ==,type:str]",
+		"organization_id": "_redacted_",
+		"project_id": "_redacted_",
+		"region": "_redacted_",
+		"secret_key_enc": "ENC[AES256_GCM,data:XXxEMJp6hpXtgw==,iv:yfXB5u3/OmWNuJABuSxbHZuunAZq4bxiN6dBs7fpH8I=,tag:DXKDua0+SiPeNzkgfkB4FA==,type:str]",
+		"zone": "_redacted_"
+	},
+	"scw_iam": {
+		"scw_multicloud_iam": {
+			"description": "IAM for priveleges to act on s3 objects",
+			"name": "scw-multicloud-iam",
+			"organization_id": "_redacted_",
+			"policies": {
+				"scw_multicloud_iam_1": {
+					"description": "Object storage for log collection",
+					"name": "scw-multicloud-iam-1",
+					"permission_sets": [
+						"ObjectStorageBucketsRead",
+						"ObjectStorageBucketsWrite",
+						"ObjectStorageBucketsDelete",
+						"ObjectStorageObjectsWrite",
+						"ObjectStorageObjectsDelete",
+						"ObjectStorageObjectsRead"
+					],
+					"project_names": [
+						"\u003credacted_project_name\u003e"
+					]
+				}
+			},
+			"project_id": "_redacted_",
+			"tags": {}
+		}
+	},
+	"scw_ssh_keys": {
+		"automation_git_read_only": {
+			"name": "git_read_only_01_ssh_key",
+			"notes": "Read access to repos in the git server for automation purposes",
+			"private_key_enc": "ENC[AES256_GCM,data:wahZEe1+iKSTMQ==,iv:/EbJL3xzm8yzzucvcLNdcc58xzOReLVQkJEUK3Ms+80=,tag:X31JfpG+95+sJB3CK7Fi3w==,type:str]",
+			"project_id": "_redacted_",
+			"public_key_enc": "ENC[AES256_GCM,data:TxpbJhy0q7PgzA==,iv:5UbY8kgP0L9GaMC6SCJofAyt4k8U9X2a2W2DBma0+do=,tag:+/7zLni7rd16YgB/V/JENQ==,type:str]",
+			"disabled": false
+		},
+		"my_ssh_key": {
+			"name": "my_ssh_key",
+			"notes": "ssh access to servers for personal purposes",
+			"private_key_enc": null,
+			"project_id": "_redacted_",
+			"public_key_enc": "ENC[AES256_GCM,data:UyqA40Uk29uAMQ==,iv:aCh35d95LxwGGyIyTsdZhKFaQn6PM96Kj4IDd+PgesI=,tag:cXR8d4YaqFetMSUNSbxebA==,type:str]",
+			"disabled": false
+		}
+	},
+	"sops_pgp_fingerprint": "21583B31C30CB8BE31418483FC6E9A7735295C2B",
+	"sops": {
+		"kms": null,
+		"gcp_kms": null,
+		"azure_kv": null,
+		"hc_vault": null,
+		"age": null,
+		"lastmodified": "2024-03-31T14:47:47Z",
+		"mac": "ENC[AES256_GCM,data:6o/HTshgfHae9IPXrWCBb/j7fNBbBabkcD4b420SOI49oCzu4MfbuNZLCEosd1BtcwgE5KpuHBcgpermH469FAbnYTGz6n6+rm7soBb2aj0jNjEJi0ElEZtlMS41Fd3oxTsnEasSZHRMSQv/DKARb6djVMU0HFikA/5W074/6qc=,iv:TaNbePAoZIC42TtRi+CPeMJ+9FYbPO3UZTGakjQEhbE=,tag:vMD+J+qliz08a3xxAHZLpA==,type:str]",
+		"pgp": [
+			{
+				"created_at": "2024-03-31T14:47:47Z",
+				"enc": "-----BEGIN PGP MESSAGE-----\n\nhQIMAx3f3zFZ2uXWAQ/+MAOQ2973CV57wxzGU+QiN+9QFLe/EdfRp2QIBxxTTqWO\nlTcEzWVtdis6quOEIiGuQGNZuLqbO0AdN14iKrkoWbHi2ApzV7Y8eTvwXA0toSFs\nt55n2ng9jaXFDs2PWLxdR2MRA2zB1sw0DpTLWsuL/YxM3kUTp2msS9keajusEfuS\na8lVETLnpvADOH/7bHpdttVB6Xz3nSdHfSdRIQORKLrMZkBO3JJJQhDqXOSiweai\nR59hsqZowa0SuuHNes3CjfSXf9R6piXkCZ2TrQ3mEIOecybGa9U5KLq/hfYexfMH\npD4LLEXf6FhWbOUOUpiUB98NbFeiXYTPL9y3mGzO+BqG6JUdowFy/2JWhfkOcsCT\nRcXEk+i7l/b3Y1JJMxd/XL6YZU/Gb2ZfTFkbt7IpIio6ituGAgK1heCE2dM4bpl7\nU3i/adjaPENR0UMKU+T6GNCLP16movImeM/u5tdgRzy3N1Ff2zhBr44P2F/I/A5b\nP4hL3FY2LPEpNb/MKhp1KfFWy7Y4rwxrUpvP+Sa6L5eY30UT+xd9NjwKMY38LrZy\nauWRuS6MSe24iaAeu5V3xBQ57fWeurhCwTK5ZZ7qGEb3s5xsGGD5E3zRLdeUOpA+\nnrucPfoA6T02zaUD+GDqAkio+Yg7eYDn+wfXWbccfTMg37m9bKIUPAwo8H1MNvLS\nXgGzxRHd6nbsoL3TiX6j69PAujBCqjMu8uH+71T/gVpT2ccUP7ddCFq0Aq98LRAJ\nrQfCpPVAgHv2fBSj+PPe00F5hv3TtnPXCXWWBpV9OSDeyKnipElI3PMKN0e+lZU=\n=129S\n-----END PGP MESSAGE-----",
+				"fp": "21583B31C30CB8BE31418483FC6E9A7735295C2B"
+			}
+		],
+		"encrypted_suffix": "_enc",
+		"version": "3.8.1"
+	}
+}

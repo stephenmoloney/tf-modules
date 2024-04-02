@@ -1,4 +1,4 @@
-# az-resource-groups example
+# multicloud-iam example
 
 The general steps to deploy the module are outlined below.
 
