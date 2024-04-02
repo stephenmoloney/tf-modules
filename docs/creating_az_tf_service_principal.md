@@ -1,6 +1,6 @@
 # Creating an Azure Service Principal with Opentofu
 
-![Azure Application and Opentofu](./creating_az_tf_service_principal_001.png)
+![Azure Application and Opentofu](./assets/creating_az_tf_service_principal_001.png)
 
 This article serves as documentation also and has been pushed to github
 at [this location](https://github.com/eirenauts/tf-modules/tree/main/docs).
@@ -52,7 +52,7 @@ permissions to execute a collection of actions against a set of resources in a p
 For example, permission to perform action `Microsoft.Storage/*/read` in the scope
 `subscriptions/<redacted-subscription-id>/resourceGroups/az-<redacted-resource-group>`.
 
-![Azure Security Principals](./creating_az_tf_service_principal_002.png)
+![Azure Security Principals](./assets/creating_az_tf_service_principal_002.png)
 Source: [Microsoft Docs](https://learn.microsoft.com/en-us/azure/role-based-access-control/media/shared/rbac-security-principal.png)
 
 The way a security principal gets a permission to execute an action is when it undergoes
@@ -63,7 +63,7 @@ so that the level of access can be distilled to a subscription, resource group o
 
 A simple diagram is below to illustrate the relationships.
 
-![Azure Role Assignments](./creating_az_tf_service_principal_003.png)
+![Azure Role Assignments](./assets/creating_az_tf_service_principal_003.png)
 
 ## Steps to create the service principal with opentofu
 
