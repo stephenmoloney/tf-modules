@@ -1,0 +1,77 @@
+{
+  "azure": {
+    "az_ad_application_name": "_redacted_",
+    "client_secret_enc": "_redacted_",
+    "subscription_id": "_redacted_",
+    "tenant_id": "_redacted_"
+  },
+  "global_tags": {
+    "environment": "test",
+    "managed-by": "terraform",
+    "triggered-by": "user-principal-stephen-moloney",
+    "project": "003-tf-networks",
+    "purpose": "scw vnet - scw loadbalancer - scw gateway",
+    "source-dir": "examples/cloud-networking",
+    "source-repo": "https://github.com/eirenauts/tf-modules.git"
+  },
+  "scw_loadbalancer": {
+    "attach_to_vpc": true,
+    "name": "cloud-networking-fr-par-2",
+    "project_id": "_redacted_",
+    "tags": {
+      "purpose": "loadbalancer for test environments"
+    },
+    "type": "LB-S",
+    "vpc_id": "",
+    "vpc_to_attach_name": "cloud_networking_fr_par",
+    "zone": "fr-par-2"
+  },
+  "scaleway": {
+    "access_key_enc": "_redacted_",
+    "organization_id": "_redacted_",
+    "project_id": "_redacted_",
+    "region": "_redacted_",
+    "secret_key_enc": "_redacted_",
+    "zone": "_redacted_"
+  },
+  "scw_public_gateways": {
+    "cloud_networking_public_gateway_fr_par": {
+      "bastion_enabled": false,
+      "bastion_port": 61000,
+      "enable_dhcp": true,
+      "enable_smtp": false,
+      "name": "cloud-networking-public-gateway-fr-par",
+      "project_id": "_redacted_",
+      "reverse_domain": "",
+      "tags": {
+        "purpose": "public gateway for scaleway resources in fr region"
+      },
+      "type": "VPC-GW-S",
+      "upstream_dns_servers": [],
+      "zone": "fr-par-2"
+    }
+  },
+  "scw_vpcs": {
+    "cloud_networking_fr_par": {
+      "gateway_enabled": true,
+      "gateway_name": "cloud-networking-public-gateway-fr-par",
+      "gateway_push_default_route": true,
+      "gateway_subnet_cidr_block": "10.0.0.0/21",
+      "gateway_zone": "fr-par-2",
+      "name": "cloud-networking-vpc-fr-par",
+      "project_id": "_redacted_",
+      "region": "fr-par",
+      "subnet_cidr_block": "10.0.0.0/21",
+      "tags": {
+        "purpose": "vpc for scaleway resources in fr region"
+      }
+    }
+  },
+  "sops_pgp_fingerprint": "21583B31C30CB8BE31418483FC6E9A7735295C2B",
+  "terraform_backend": {
+    "storage_account_name": "_redacted_",
+    "storage_account_resource_group": "_redacted_",
+    "storage_container_key": "default.tfstate",
+    "storage_container_name": "cloud-networking"
+  }
+}
