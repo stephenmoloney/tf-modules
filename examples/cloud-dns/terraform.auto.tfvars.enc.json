@@ -1,0 +1,92 @@
+{
+	"az_scw_dns": {
+		"az_resource_group": "tf-modules-az-rg-1",
+		"dns_zones": {
+			"azure": {
+				"example.com": {
+					"a_records": []
+				},
+				"ops.example.com": {
+					"a_records": [
+						"oauth2",
+						"linkerd",
+						"kubernetes",
+						"alertmanager",
+						"grafana",
+						"prometheus"
+					]
+				}
+			},
+			"scw": {
+				"example.com": {
+					"redirect_using_azure_ns_records": true
+				}
+			}
+		},
+		"scw_loadbalancer_name_for_a_records": "cloud-networking-loadbalancer-fr-par-2",
+		"tags": {
+			"purpose": "dns management for various environments"
+		}
+	},
+	"scw_dns": {
+		"dns_zones": {
+			"example.com": {
+				"a_records": {
+					"git": "_redacted_ip_address_"
+				},
+				"cname_records": {
+					"www.git": "git.example.com"
+				},
+				"project_id": "_redacted_"
+			}
+		}
+	},
+	"global_tags": {
+		"environment": "test",
+		"managed-by": "terraform",
+		"triggered-by": "user-principal-stephen-moloney",
+		"project": "az-cloud-dns",
+		"purpose": "Demonstrating azure dns, scaleway dns and ns redirects from scaleway to azure",
+		"source-dir": "examples/cloud-dns",
+		"source-repo": "https://github.com/eirenauts/tf-modules.git"
+	},
+	"azure": {
+		"az_ad_application_name": "_redacted_",
+		"client_secret_enc": "ENC[AES256_GCM,data:BnuPCq/bh/DdpQ==,iv:NIwA3PdMq75uH3kOAZG6NACAxG4jeLQxkZa3kE4+HaU=,tag:w4vFTPjJGlgRR45AAFkxJA==,type:str]",
+		"subscription_id": "_redacted_",
+		"tenant_id": "_redacted_"
+	},
+	"terraform_backend": {
+		"storage_account_name": "_redacted_",
+		"storage_account_resource_group": "_redacted_",
+		"storage_container_key": "default.tfstate",
+		"storage_container_name": "az-cloud-dns"
+	},
+	"scaleway": {
+		"access_key_enc": "ENC[AES256_GCM,data:yWmCebAGyZ+UVA==,iv:wEImzEas2zPz+Np9s9rk2F8A2rn17tY02i2PiJkE6BU=,tag:OCgRugtutH9znqqTfDb8kg==,type:str]",
+		"organization_id": "_redacted_",
+		"project_id": "_redacted_",
+		"region": "_redacted_",
+		"secret_key_enc": "ENC[AES256_GCM,data:x80Crrlt7AMwVw==,iv:LaMNxC/Mq/2Z8F2/cTG+p5xCz43LkO/sLukOTMOF1Qg=,tag:5mUuHyPzyhdII/BopGtWKg==,type:str]",
+		"zone": "_redacted_"
+	},
+	"sops_pgp_fingerprint": "21583B31C30CB8BE31418483FC6E9A7735295C2B",
+	"sops": {
+		"kms": null,
+		"gcp_kms": null,
+		"azure_kv": null,
+		"hc_vault": null,
+		"age": null,
+		"lastmodified": "2024-04-06T16:36:48Z",
+		"mac": "ENC[AES256_GCM,data:mg2hHK7IBy39cOhvC3K6JMGZ/Arcx/FPlhenyOqXj23IdNO9FVcuJng7GqiYhF+DoBw26FLMAXIuYiK5HQe5ZXO5E6NkC1uEcyEDl6JENeX8+fV0JoB9+f2G262hEsWNrL5TQM53ANlWqblI23ttByYpwUFu1SGnbUvDSrRaJSg=,iv:iGNAaT0k8U4G6oqdjzS0M3AfgTjvivVD4UtocB1GEOA=,tag:j0asKYkt6g3qAP/Iqt2zQg==,type:str]",
+		"pgp": [
+			{
+				"created_at": "2024-04-06T16:36:48Z",
+				"enc": "-----BEGIN PGP MESSAGE-----\n\nhQIMAx3f3zFZ2uXWAQ/+JTAQkFpNh6IPPeFT8Q/fLlfGG/Tc7eK3d9lwHO5Qp3tv\n2hG++vceaZefzYiYBjop4TvgiVujgjvkS5k8iQ91oHI1vpskCCq2GHOaJEAzfesa\nIvio2Pr71SE++0CCTIySwfdyacmqO+FSUbuTGjcssltdCxnTVWyr+QxhZQF04q87\nzwSOT8w0/tz6yBPA5LYpraVcdTVIqyB1Lk3sOeS/roQYhvdaG2rAYs8nqLBii3Wk\nxTt7Ux6GaWIoovo8wemu5PnILONcUlgm1QCFoUHGtVJk/YxM4c+9qKZ6HRJ73Vqq\nftw4EBj40evMaXrXdUXH1NJggwIKT8yzeeaJn+XamWlurjL7tJd79E9e0NuaGbXc\ntr5fXNGNNN/x3lIe+tl0n+0SkAQ2F/jagPwQUejlz/1erCfRSw3CnHQyNl3suZ4p\nXeJLogbdD3YgDvoFBdnnJBcmABxIzlr3XJBEkjfbyLdrVZc9htJ3FwEJWtAoCJFe\npju3KJRSqUwqWKnkLfet5OwMCjoajT3Yxr3jUJTodb6zacK5oW54zdlqrcPCxlXG\nQwHfdQbYvRAPIm8VhFo/+AdkryG5q1oLV2Nw2TUOrDGTY6kzT65JsHSdkWiFsJ3Y\n3cYYgqRTzpP5eGRmcfJv5TlBvDovvgqyxV/x1W6jEvVuNjrZA7HhrwTmIEe4c23S\nXgFIFXwdlfjmgSJM8TOcbtmp4HZvDzJkQ2BHOLBkGoSLN37IJdYBEsdpcV/lPyDo\nOSklsPrCUakn+h6F4Z/qrPaGLX7lbz1fg6eo5zQFwMkRJTgR0j6D3EPFZm4TFuc=\n=grs5\n-----END PGP MESSAGE-----",
+				"fp": "21583B31C30CB8BE31418483FC6E9A7735295C2B"
+			}
+		],
+		"encrypted_suffix": "_enc",
+		"version": "3.8.1"
+	}
+}
