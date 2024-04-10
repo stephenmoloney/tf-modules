@@ -137,6 +137,7 @@ variable "az_key_vaults" {
       bypass                     = string
     }))
     tags = map(string)
+    tf_ignore_network_rules = bool
   }))
 }
 

@@ -1,6 +1,6 @@
 // Scaleway SSH Keys
 module "scw_ssh_keys" {
-  source = "git::https://github.com/eirenauts/tf-modules.git//modules/scw-ssh-key?ref=0.0.6"
+  source = "git::https://github.com/eirenauts/tf-modules.git//modules/scw-ssh-key?ref=0.12.0"
   //  source = "../../tf-modules/modules/scw-ssh-key"
 
   for_each    = var.scw_ssh_keys
@@ -9,7 +9,7 @@ module "scw_ssh_keys" {
 
 // Create Azure Service Principals
 module "az_service_principals" {
-  source = "git::https://github.com/eirenauts/tf-modules.git//modules/az-service-principal?ref=0.0.6"
+  source = "git::https://github.com/eirenauts/tf-modules.git//modules/az-service-principal?ref=0.12.0"
   // source = "../../tf-modules/modules/az-service-principal"
 
   for_each = {
@@ -23,7 +23,7 @@ module "az_service_principals" {
 
 //// Create scaleway iam applications with policies set
 module "scw_iam" {
-  source = "git::https://github.com/eirenauts/tf-modules.git//modules/scw-iam?ref=0.0.6"
+  source = "git::https://github.com/eirenauts/tf-modules.git//modules/scw-iam?ref=0.12.0"
   // source = "../../tf-modules/modules/scw-iam"
 
   for_each = var.scw_iam
@@ -40,7 +40,7 @@ module "scw_iam" {
 
 // Create azure key vaults
 module "az_key_vaults" {
-  source = "git::https://github.com/eirenauts/tf-modules.git//modules/az-key-vault?ref=0.0.6"
+  source = "git::https://github.com/eirenauts/tf-modules.git//modules/az-key-vault?ref=0.12.0"
   // source   = "../../tf-modules/modules/az-key-vault"
   for_each = var.az_key_vaults
 
@@ -54,7 +54,7 @@ module "az_key_vaults" {
 // Azure secret storage of the scaleway iam api keys
 module "az_scw_iam_secrets" {
   depends_on = [module.az_key_vaults, module.scw_iam]
-  source     = "git::https://github.com/eirenauts/tf-modules.git//modules/az-key-vault-secret?ref=0.0.6"
+  source     = "git::https://github.com/eirenauts/tf-modules.git//modules/az-key-vault-secret?ref=0.12.0"
   // source     = "../../tf-modules/modules/az-key-vault-secret"
 
   for_each = var.az_scw_iam_secrets
