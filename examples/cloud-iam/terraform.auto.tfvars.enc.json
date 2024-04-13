@@ -1,25 +1,4 @@
 {
-	"global_tags": {
-		"environment": "test",
-		"managed-by": "terraform",
-		"triggered-by": "user-principal-stephen-moloney",
-		"project": "az-multicloud-iam",
-		"purpose": "Demonstrating azure key vault and scaleway iam usage",
-		"source-dir": "examples/multicloud-iam",
-		"source-repo": "https://github.com/eirenauts/tf-modules.git"
-	},
-	"azure": {
-		"az_ad_application_name": "_redacted_",
-		"client_secret_enc": "ENC[AES256_GCM,data:N1xdRlxl2WdoHw==,iv:rJWAk6mEbqoCR7lLdHCu/9hVvBnQclbpvGGzL/ewp7o=,tag:Fogyln4+T9FSsFIIkHzaUg==,type:str]",
-		"subscription_id": "_redacted_",
-		"tenant_id": "_redacted_"
-	},
-	"terraform_backend": {
-		"storage_account_name": "_redacted_",
-		"storage_account_resource_group": "_redacted_",
-		"storage_container_key": "default.tfstate",
-		"storage_container_name": "az-multicloud-iam"
-	},
 	"az_key_vaults": {
 		"multicloud_iam_kv": {
 			"access_policies": [
@@ -137,18 +116,19 @@
 			"sku": "standard",
 			"tags": {
 				"purpose": "key-vault to be consumed by applications and other terraform projects"
-			}
+			},
+			"tf_ignore_network_rules": false
 		}
 	},
 	"az_scw_iam_secrets": {
 		"scw_multicloud_iam_access_key": {
-			"name": "scw-multicloud-iam-access-key",
 			"content_type": "text/plain",
 			"expires": false,
 			"expiry_day": null,
 			"expiry_month": null,
 			"expiry_year": null,
 			"iam_key": "scw_multicloud_iam_key",
+			"name": "scw-multicloud-iam-access-key",
 			"resource_group": "tf-modules-az-rg-1",
 			"tags": {
 				"purpose": "Access key for scaleway iam to access s3 object storage"
@@ -156,13 +136,13 @@
 			"vault": "az-multicloud-key-vault"
 		},
 		"scw_multicloud_iam_secret_key": {
-			"name": "scw-multicloud-iam-secret-key",
 			"content_type": "text/plain",
 			"expires": false,
 			"expiry_day": null,
 			"expiry_month": null,
 			"expiry_year": null,
 			"iam_key": "scw_multicloud_iam_key",
+			"name": "scw-multicloud-iam-secret-key",
 			"resource_group": "tf-modules-az-rg-1",
 			"tags": {
 				"purpose": "Secret key for scaleway iam to access s3 object storage"
@@ -221,12 +201,27 @@
 			"skip_service_principal_aad_check": false
 		}
 	},
+	"azure": {
+		"az_ad_application_name": "_redacted_",
+		"client_secret_enc": "ENC[AES256_GCM,data:+SFTllc2fA8OlQ==,iv:ArEN01XYTCd4T9/IEUtlhxfF9dmHlT7+2ubbLUJ0nKo=,tag:A8P6Xb5F5SSOLu4yw9lebw==,type:str]",
+		"subscription_id": "_redacted_",
+		"tenant_id": "_redacted_"
+	},
+	"global_tags": {
+		"environment": "test",
+		"managed-by": "terraform",
+		"project": "az-multicloud-iam",
+		"purpose": "Demonstrating azure key vault and scaleway iam usage",
+		"source-dir": "examples/multicloud-iam",
+		"source-repo": "https://github.com/eirenauts/tf-modules.git",
+		"triggered-by": "user-principal-stephen-moloney"
+	},
 	"scaleway": {
-		"access_key_enc": "ENC[AES256_GCM,data:cC7vmgY70GBqZA==,iv:t9Jux16Kjbk7jFzeirRnegVmX5x3GobfaW9l0JepyGk=,tag:sCpKCc76khM1Zb88ye0RvQ==,type:str]",
+		"access_key_enc": "ENC[AES256_GCM,data:RDRAVy9UjVL41Q==,iv:I8jJWKs3FFT/NzLfJaJnmzQ9sI9jCvWSQiZg2IgUR2s=,tag:X4UaVD60Gs1XH2e+KmuMdw==,type:str]",
 		"organization_id": "_redacted_",
 		"project_id": "_redacted_",
 		"region": "_redacted_",
-		"secret_key_enc": "ENC[AES256_GCM,data:XXxEMJp6hpXtgw==,iv:yfXB5u3/OmWNuJABuSxbHZuunAZq4bxiN6dBs7fpH8I=,tag:DXKDua0+SiPeNzkgfkB4FA==,type:str]",
+		"secret_key_enc": "ENC[AES256_GCM,data:J0Gxeno8Z2Evhw==,iv:WZOuIp6zff5DxFSsNxP7phPvYUGdTlUURt0uuCBfj2E=,tag:SG6PIyMToVIMKHogBYosZQ==,type:str]",
 		"zone": "_redacted_"
 	},
 	"scw_iam": {
@@ -257,35 +252,41 @@
 	},
 	"scw_ssh_keys": {
 		"automation_git_read_only": {
+			"disabled": false,
 			"name": "git_read_only_01_ssh_key",
 			"notes": "Read access to repos in the git server for automation purposes",
-			"private_key_enc": "ENC[AES256_GCM,data:wahZEe1+iKSTMQ==,iv:/EbJL3xzm8yzzucvcLNdcc58xzOReLVQkJEUK3Ms+80=,tag:X31JfpG+95+sJB3CK7Fi3w==,type:str]",
+			"private_key_enc": "ENC[AES256_GCM,data:ritvl4lM8rIPhA==,iv:O4u1coMq70JNfIW7Ra+qU8XsN6GbC4RiLZE1EJ/yWJ8=,tag:qmOJrzIJoWv0hc8LYbvh7A==,type:str]",
 			"project_id": "_redacted_",
-			"public_key_enc": "ENC[AES256_GCM,data:TxpbJhy0q7PgzA==,iv:5UbY8kgP0L9GaMC6SCJofAyt4k8U9X2a2W2DBma0+do=,tag:+/7zLni7rd16YgB/V/JENQ==,type:str]",
-			"disabled": false
+			"public_key_enc": "ENC[AES256_GCM,data:UoRmPi+DTiaW6w==,iv:QiUMKLFBg0c/vr+R37IOFJE3Mm2QGGbNwGX7CkkfLpE=,tag:ukb5EG+G6b6nMDsJsQK2Iw==,type:str]"
 		},
 		"my_ssh_key": {
+			"disabled": false,
 			"name": "my_ssh_key",
 			"notes": "ssh access to servers for personal purposes",
 			"private_key_enc": null,
 			"project_id": "_redacted_",
-			"public_key_enc": "ENC[AES256_GCM,data:UyqA40Uk29uAMQ==,iv:aCh35d95LxwGGyIyTsdZhKFaQn6PM96Kj4IDd+PgesI=,tag:cXR8d4YaqFetMSUNSbxebA==,type:str]",
-			"disabled": false
+			"public_key_enc": "ENC[AES256_GCM,data:1swokxHH4nuMNA==,iv:2/q1oWx/CHBuIeyEg3NgHSGc/pzn5GrWmQ6C3pinLKw=,tag:Ms5V3WTWiY9BCYI9/JLbmQ==,type:str]"
 		}
 	},
 	"sops_pgp_fingerprint": "21583B31C30CB8BE31418483FC6E9A7735295C2B",
+	"terraform_backend": {
+		"storage_account_name": "_redacted_",
+		"storage_account_resource_group": "_redacted_",
+		"storage_container_key": "default.tfstate",
+		"storage_container_name": "az-multicloud-iam"
+	},
 	"sops": {
 		"kms": null,
 		"gcp_kms": null,
 		"azure_kv": null,
 		"hc_vault": null,
 		"age": null,
-		"lastmodified": "2024-03-31T14:47:47Z",
-		"mac": "ENC[AES256_GCM,data:6o/HTshgfHae9IPXrWCBb/j7fNBbBabkcD4b420SOI49oCzu4MfbuNZLCEosd1BtcwgE5KpuHBcgpermH469FAbnYTGz6n6+rm7soBb2aj0jNjEJi0ElEZtlMS41Fd3oxTsnEasSZHRMSQv/DKARb6djVMU0HFikA/5W074/6qc=,iv:TaNbePAoZIC42TtRi+CPeMJ+9FYbPO3UZTGakjQEhbE=,tag:vMD+J+qliz08a3xxAHZLpA==,type:str]",
+		"lastmodified": "2024-04-13T10:03:58Z",
+		"mac": "ENC[AES256_GCM,data:3VInWieRiRzI4URxaUkRKslAsaf5wyz4H3U4RhD9LWeTPnQgamcmV9Xp64Ni0kEurpXuHrXznfVsuA3PROFb3cJ6KQxR621G8RoLerHRQboRaWFBMc5bIHCrv/q7SGykrl3Boj8qXZtZ3/SIwIzx5N5cHsrF1i0tz2QK0jI2UiM=,iv:TvbCIQQi0p3sPcj6OjMIsq5Wf6M8hMfyYF61dK+fZu0=,tag:V+RlyjT0XV1yDUwRB+LiPQ==,type:str]",
 		"pgp": [
 			{
-				"created_at": "2024-03-31T14:47:47Z",
-				"enc": "-----BEGIN PGP MESSAGE-----\n\nhQIMAx3f3zFZ2uXWAQ/+MAOQ2973CV57wxzGU+QiN+9QFLe/EdfRp2QIBxxTTqWO\nlTcEzWVtdis6quOEIiGuQGNZuLqbO0AdN14iKrkoWbHi2ApzV7Y8eTvwXA0toSFs\nt55n2ng9jaXFDs2PWLxdR2MRA2zB1sw0DpTLWsuL/YxM3kUTp2msS9keajusEfuS\na8lVETLnpvADOH/7bHpdttVB6Xz3nSdHfSdRIQORKLrMZkBO3JJJQhDqXOSiweai\nR59hsqZowa0SuuHNes3CjfSXf9R6piXkCZ2TrQ3mEIOecybGa9U5KLq/hfYexfMH\npD4LLEXf6FhWbOUOUpiUB98NbFeiXYTPL9y3mGzO+BqG6JUdowFy/2JWhfkOcsCT\nRcXEk+i7l/b3Y1JJMxd/XL6YZU/Gb2ZfTFkbt7IpIio6ituGAgK1heCE2dM4bpl7\nU3i/adjaPENR0UMKU+T6GNCLP16movImeM/u5tdgRzy3N1Ff2zhBr44P2F/I/A5b\nP4hL3FY2LPEpNb/MKhp1KfFWy7Y4rwxrUpvP+Sa6L5eY30UT+xd9NjwKMY38LrZy\nauWRuS6MSe24iaAeu5V3xBQ57fWeurhCwTK5ZZ7qGEb3s5xsGGD5E3zRLdeUOpA+\nnrucPfoA6T02zaUD+GDqAkio+Yg7eYDn+wfXWbccfTMg37m9bKIUPAwo8H1MNvLS\nXgGzxRHd6nbsoL3TiX6j69PAujBCqjMu8uH+71T/gVpT2ccUP7ddCFq0Aq98LRAJ\nrQfCpPVAgHv2fBSj+PPe00F5hv3TtnPXCXWWBpV9OSDeyKnipElI3PMKN0e+lZU=\n=129S\n-----END PGP MESSAGE-----",
+				"created_at": "2024-04-13T10:03:58Z",
+				"enc": "-----BEGIN PGP MESSAGE-----\n\nhQIMAx3f3zFZ2uXWAQ/9EgE6kepNgdIcnICukzhJ84FD23FgrE+fyaucDVY8ti1M\n5SDS9mi0KnSSYXRGl/+bogamfrLBvC1BwVUY/1WYOcfSSqozIClW1BPRCYXD/vib\nOez66h+pQ8/EeHi4FBPTTwFrnBetNZp4deFPoEvpZCWZbqcp6Qo7m1KEJ7fVIWKU\nuuKimic6AqLkBk7XBfy+iWm3VdXPnatS6ZM+zK04bGu8Ktl9+3rqu0fVdkm6xvLd\n2OgQ29GxTrKEk5JPQMN/Gkd05wJlcuzGOPiU9pe8i1UQbYsYNE8TEv3oxJ5I4se/\nWJqgMmpbrA+m8+0eF5Sw+coHsPEuv8HzIF8/Zy/p+YfiJHmE8qXl2dC4uqCX7NzC\n7mOTbBBm3acCo13Bws8N89q54wMQYUtAtlxGT9WCIc31RJTTnQctXU9ZJOqBXCNT\nJAZWUQCKfvgvsk+K1RUqV9ontlCadSICAqpTmMJaBinOmsmkOMGkV5R0BdGa7KIl\nHT4y02jazfU3dH894seUaEn/7KnqzbaBqlkBMv+ELTjFWpXxINlZ6gHOFHOhQ7tY\nE/MSeL50XqutvADCkfbokGNYEL4Utk6Pz8exKiZFViwo/TwqGCeLEihmc5bRoXBl\njR5QxNRQyHI3vYrW9Bh/nJDSqQ517VriwA6JxNc/HQ5Za+yxH6B6CiMggcheeALS\nXgEspTRwvPzKlqfCip8oB3AfjQobvm63ift5N/wAJE1TgAThrTt2N+h3H8aDcwBy\n1lhfAoN+Wl4VJuGCL0RJUqFxjp75gFOmWPFU45LEtRha854zRYPToBvc7mGdixk=\n=F5Es\n-----END PGP MESSAGE-----",
 				"fp": "21583B31C30CB8BE31418483FC6E9A7735295C2B"
 			}
 		],

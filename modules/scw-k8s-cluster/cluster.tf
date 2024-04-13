@@ -92,6 +92,11 @@ resource "scaleway_k8s_pool" "scw_k8s_cluster_pools" {
   region                 = var.scw_k8s_region
   wait_for_pool_ready    = each.value.wait_for_pool_ready
   placement_group_id     = scaleway_instance_placement_group.scw_k8s_placement_groups[each.value.placement_group.name].id
+
+  timeouts {
+    create = "30m"
+    update = "30m"
+  }
 }
 
 resource "local_file" "scw_k8s_kubeconfig" {
