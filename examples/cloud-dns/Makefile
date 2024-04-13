@@ -31,6 +31,15 @@ print_params:
 	@$(GIT_ROOT_DIR)/.ci/exec_functions.sh get_tf_backend_az_storage_container_key
 	@$(GIT_ROOT_DIR)/.ci/exec_functions.sh get_sas_token
 
+init_local_backend:
+	rm -rf .terraform
+	tofu init -cloud=false
+
+upgrade_local_backend:
+	rm -rf .terraform
+	rm .terraform.lock.hcl
+	tofu init -cloud=false -upgrade
+
 init_backend:
 	rm -rf .terraform
 	@$(GIT_ROOT_DIR)/.ci/exec_functions.sh tf_init_az_backend \

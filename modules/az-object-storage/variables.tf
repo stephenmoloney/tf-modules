@@ -15,10 +15,11 @@ variable "az_storage_account" {
       bypass                     = list(string)
     }))
     large_file_share_enabled = bool
-    tags                     = map(string)
     storage_containers = map(object({
       name        = string
       access_type = string
     }))
+    tags                    = map(string)
+    tf_ignore_network_rules = bool
   })
 }

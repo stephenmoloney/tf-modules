@@ -12,11 +12,7 @@ terraform {
     }
     scaleway = {
       source  = "registry.opentofu.org/scaleway/scaleway"
-      version = "2.38.2"
-    }
-    time = {
-      source  = "registry.opentofu.org/hashicorp/time"
-      version = "0.11.1"
+      version = "2.38.3"
     }
   }
 }
