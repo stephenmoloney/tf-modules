@@ -3,11 +3,11 @@ terraform {
 
   required_providers {
     azurerm = {
-      source  = "hashicorp/azurerm"
+      source  = "registry.opentofu.org/hashicorp/azurerm"
       version = "3.96.0"
     }
     azuread = {
-      source  = "hashicorp/azuread"
+      source  = "registry.opentofu.org/hashicorp/azuread"
       version = "2.35.0"
     }
   }

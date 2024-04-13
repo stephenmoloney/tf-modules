@@ -11,3 +11,4 @@ asdf.sh
 node_modules/*
 *.bkp
 *.dtmp
+examples/**/*.lock.hcl

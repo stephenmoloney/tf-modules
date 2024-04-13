@@ -136,7 +136,7 @@ variable "az_key_vaults" {
       virtual_network_subnet_ids = list(string)
       bypass                     = string
     }))
-    tags = map(string)
+    tags                    = map(string)
     tf_ignore_network_rules = bool
   }))
 }

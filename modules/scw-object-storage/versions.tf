@@ -3,7 +3,7 @@ terraform {
 
   required_providers {
     scaleway = {
-      source  = "scaleway/scaleway"
+      source  = "registry.opentofu.org/scaleway/scaleway"
       version = "2.38.3"
     }
   }
